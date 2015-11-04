@@ -1,4 +1,3 @@
-// neural-net-tutorial.cpp
 // David Miller, http://millermattson.com/dave
 // See the associated video for instructions: http://vimeo.com/19569529
 
