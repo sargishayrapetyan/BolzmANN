@@ -43,3 +43,12 @@ Temporary Items
 .apdisk
 *.suo
 ANN.sdf
+*.log
+ANN/x64/Debug/ANN.tlog/CL.command.1.tlog
+*.tlog
+x64/Debug/ANN.exe
+*.pdb
+x64/Debug/ANN.ilk
+*.idb
+ANN/x64/Debug/main.obj
+*.opensdf
