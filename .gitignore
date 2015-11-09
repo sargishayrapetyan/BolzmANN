@@ -53,3 +53,5 @@ x64/Debug/ANN.ilk
 *.log
 ANN/x64/Debug/vc140.idb
 ANN.opensdf
+*.psess
+*.vsp
