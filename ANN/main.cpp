@@ -49,6 +49,8 @@ void TrainingData::getTopology(vector<unsigned> &topology)
         ss >> n;
         topology.push_back(n);
     }
+
+    return;
 }
 
 TrainingData::TrainingData(const string filename)
