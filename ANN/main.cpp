@@ -9,7 +9,7 @@ using namespace std;
 void showVectorVals(string label, vector<double> &v)
 {
     cout << label << " ";
-    for (unsigned i = 0; i < v.size(); ++i) {
+    for (int i = 0; i < v.size(); ++i) {
         cout << v[i] << " ";
     }
 
@@ -22,7 +22,7 @@ int main()
     TrainingData trainData("trainingData.txt");
 
     // e.g., { 3, 2, 1 }
-    vector<unsigned> topology;
+    vector<int> topology;
     trainData.getTopology(topology);
 
     Net myNet(topology);

@@ -1,7 +1,7 @@
 #include "TrainingData.h"
 #include <sstream>
 
-void TrainingData::getTopology(vector<unsigned> &topology)
+void TrainingData::getTopology(vector<int> &topology)
 {
     string line;
     string label;
@@ -14,7 +14,7 @@ void TrainingData::getTopology(vector<unsigned> &topology)
     }
 
     while (!ss.eof()) {
-        unsigned n;
+        int n;
         ss >> n;
         topology.push_back(n);
     }
@@ -27,7 +27,7 @@ TrainingData::TrainingData(const string filename)
     m_trainingDataFile.open(filename.c_str());
 }
 
-unsigned TrainingData::getNextInputs(vector<double> &inputVals)
+int TrainingData::getNextInputs(vector<double> &inputVals)
 {
     inputVals.clear();
 
@@ -47,7 +47,7 @@ unsigned TrainingData::getNextInputs(vector<double> &inputVals)
     return inputVals.size();
 }
 
-unsigned TrainingData::getTargetOutputs(vector<double> &targetOutputVals)
+int TrainingData::getTargetOutputs(vector<double> &targetOutputVals)
 {
     targetOutputVals.clear();
 
