@@ -43,7 +43,7 @@ void Net::backProp(const vector<double> &targetVals)
 
     // Calculate hidden layer gradients
 
-    for (int layerNum = m_layers.size() - 2; layerNum > 0; --layerNum) {
+    for (size_t layerNum = m_layers.size() - 2; layerNum > 0; --layerNum) {
         Layer &hiddenLayer = m_layers[layerNum];
         Layer &nextLayer = m_layers[layerNum + 1];
 
@@ -55,7 +55,7 @@ void Net::backProp(const vector<double> &targetVals)
     // For all layers from outputs to first hidden layer,
     // update connection weights
 
-    for (int layerNum = m_layers.size() - 1; layerNum > 0; --layerNum) {
+    for (size_t layerNum = m_layers.size() - 1; layerNum > 0; --layerNum) {
         Layer &layer = m_layers[layerNum];
         Layer &prevLayer = m_layers[layerNum - 1];
 
@@ -85,7 +85,7 @@ void Net::feedForward(const vector<double> &inputVals)
 
 Net::Net(const vector<int> &topology)
 {
-    int numLayers = topology.size();
+    size_t numLayers = topology.size();
     for (int layerNum = 0; layerNum < numLayers; ++layerNum) {
         m_layers.push_back(Layer());
         int numOutputs = layerNum == topology.size() - 1 ? 0 : topology[layerNum + 1];
