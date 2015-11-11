@@ -10,11 +10,11 @@ public:
     void feedForward(const vector<double> &inputVals);
     void backProp(const vector<double> &targetVals);
     void getResults(vector<double> &resultVals) const;
-    double getRecentAverageError(void) const { return m_recentAverageError; }
+    double getRecentAverageError() const { return recentAverageError_; }
 
 private:
-    vector<Layer> m_layers; // m_layers[layerNum][neuronNum]
-    double m_error;
-    double m_recentAverageError;
-    static double m_recentAverageSmoothingFactor;
+    vector<Layer> layers_; // layers_[layerNum][neuronNum]
+    double error_;
+    double recentAverageError_;
+    static double recentAverageSmoothingFactor_;
 };
