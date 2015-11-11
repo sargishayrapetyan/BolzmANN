@@ -15,7 +15,7 @@ typedef vector<Neuron> Layer;
 class Neuron
 {
 public:
-    Neuron(unsigned numOutputs, unsigned myIndex);
+    Neuron(int numOutputs, int myIndex);
     void setOutputVal(double val) { m_outputVal = val; }
     double getOutputVal(void) const { return m_outputVal; }
     void feedForward(const Layer &prevLayer);
@@ -32,6 +32,6 @@ private:
     double sumDOW(const Layer &nextLayer) const;
     double m_outputVal;
     vector<Connection> m_outputWeights;
-    unsigned m_myIndex;
+    int m_myIndex;
     double m_gradient;
 };
