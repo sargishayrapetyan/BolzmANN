@@ -153,6 +153,7 @@
     <ClCompile Include="TrainingData.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library.h" />
     <ClInclude Include="Net.h" />
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="TrainingData.h" />
