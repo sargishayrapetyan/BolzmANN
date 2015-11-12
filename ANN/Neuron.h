@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NEURON_H
+#define NEURON_H
+
 #include <vector>
 
 using namespace std;
@@ -35,3 +37,5 @@ private:
     int myIndex_;
     double gradient_;
 };
+
+#endif // NEURON_H

@@ -44,7 +44,7 @@ int TrainingData::getNextInputs(vector<double> &inputVals)
         }
     }
 
-    return inputVals.size();
+    return static_cast<int>(inputVals.size());
 }
 
 int TrainingData::getTargetOutputs(vector<double> &targetOutputVals)
@@ -64,5 +64,5 @@ int TrainingData::getTargetOutputs(vector<double> &targetOutputVals)
         }
     }
 
-    return targetOutputVals.size();
+    return static_cast<int>(targetOutputVals.size());
 }

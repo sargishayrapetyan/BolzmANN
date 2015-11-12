@@ -1,5 +1,6 @@
-#pragma once
-#include <vector>
+#ifndef  NET_H
+#define  NET_H
+
 #include "Neuron.h"
 using namespace std;
 
@@ -18,3 +19,5 @@ private:
     double recentAverageError_;
     static double recentAverageSmoothingFactor_;
 };
+
+#endif // NET_H

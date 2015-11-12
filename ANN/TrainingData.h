@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TRAININGDATA_H
+#define TRAININGDATA_H
+
 #include <vector>
 #include <fstream>
 #include <string>
@@ -19,3 +21,5 @@ public:
 private:
     ifstream trainingDataFile_;
 };
+
+#endif // TRAININGDATA_H
