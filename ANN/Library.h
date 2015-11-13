@@ -9,7 +9,7 @@
 #include <queue>
 
 template<typename Type>
-struct Vector : public std::vector<Type>
+struct Vector : std::vector<Type>
 {
     using My = Vector;
 
@@ -20,7 +20,7 @@ struct Vector : public std::vector<Type>
 };
 
 template<typename Type>
-struct List : public std::list<Type>
+struct List : std::list<Type>
 {
     using My = List;
 
@@ -31,7 +31,7 @@ struct List : public std::list<Type>
 };
 
 template<typename Type>
-struct Map : public std::map<Type>
+struct Map : std::map<Type>
 {
     using My = Map;
 
@@ -42,7 +42,7 @@ struct Map : public std::map<Type>
 };
 
 template<typename Type>
-struct Set : public std::set<Type>
+struct Set : std::set<Type>
 {
     using My = Set;
 
@@ -53,7 +53,7 @@ struct Set : public std::set<Type>
 };
 
 template<typename Type>
-struct Stack : public std::stack<Type>
+struct Stack : std::stack<Type>
 {
     using My = Stack;
 
@@ -64,7 +64,7 @@ struct Stack : public std::stack<Type>
 };
 
 template<typename Type>
-struct Queue : public std::queue<Type>
+struct Queue : std::queue<Type>
 {
     using My = Queue;
 
