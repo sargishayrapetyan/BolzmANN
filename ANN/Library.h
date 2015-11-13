@@ -8,69 +8,69 @@
 #include <stack>
 #include <queue>
 
-template<typename Type>
-struct Vector : std::vector<Type>
+template<typename T>
+struct Vector : std::vector<T>
 {
     using My = Vector;
 
-    bool contains(const Type& value)
+    bool contains(const T& x) const
     {
-        return (std::find(My::begin(), My::end(), value) != My::end());
+        return (std::find(My::begin(), My::end(), x) != My::end());
     }
 };
 
-template<typename Type>
-struct List : std::list<Type>
+template<typename T>
+struct List : std::list<T>
 {
     using My = List;
 
-    bool contains(const Type& value)
+    bool contains(const T& x) const 
     {
-        return (std::find(My::begin(), My::end(), value) != My::end());
+        return (My::find(x) != My::end());
     }
 };
 
-template<typename Type>
-struct Map : std::map<Type>
+template<typename K, typename T>
+struct Map : std::map<K, T>
 {
     using My = Map;
 
-    bool contains(const Type& value)
+    bool contains(const K& key) const
     {
-        return (std::find(My::begin(), My::end(), value) != My::end());
+        return (My::find(key) != My::end());
     }
 };
 
-template<typename Type>
-struct Set : std::set<Type>
+template<typename K>
+struct Set : std::set<K>
 {
     using My = Set;
 
-    bool contains(const Type& value)
+    bool contains(const K& key) const
     {
-        return (std::find(My::begin(), My::end(), value) != My::end());
+        return (My::find(key) != My::end());
     }
 };
 
-template<typename Type>
-struct Stack : std::stack<Type>
+template<typename T>
+struct Stack : std::stack<T>
 {
     using My = Stack;
 
-    bool contains(const Type& value)
+    bool contains(const T& x) const
     {
-        return (std::find(My::begin(), My::end(), value) != My::end());
+        return (std::find(My::begin(), My::end(), x) != My::end());
     }
 };
 
-template<typename Type>
-struct Queue : std::queue<Type>
+template<typename T>
+struct Queue : std::queue<T>
 {
     using My = Queue;
 
-    bool contains(const Type& value)
+    bool contains(const T& x) const
     {
-        return (std::find(My::begin(), My::end(), value) != My::end());
+        return (std::find(My::begin(), My::end(), x) != My::end());
     }
 };
 
