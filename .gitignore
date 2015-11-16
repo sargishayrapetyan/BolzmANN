@@ -42,16 +42,15 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.suo
-ANN.sdf
+*.sdf
 *.tlog
-ANN/x64/Debug/Neuron.obj
 *.obj
-ANN/x64/Debug/vc140.pdb
+*.pdb
 *.exe
-x64/Debug/ANN.ilk
+*.ilk
 *.pdb
 *.log
-ANN/x64/Debug/vc140.idb
-ANN.opensdf
+*.idb
+*.opensdf
 *.psess
 *.vsp
