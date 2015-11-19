@@ -1,6 +1,6 @@
 #include "TrainingData.h"
 #include <sstream>
-
+using namespace ANN;
 void TrainingData::getTopology(vector<int> &topology)
 {
     string line;
