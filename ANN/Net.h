@@ -3,6 +3,7 @@
 
 #include "Neuron.h"
 using namespace std;
+
 namespace ANN
 {
 	class Net
