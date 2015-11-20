@@ -42,13 +42,15 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.suo
-ANN.sdf
-*.log
-ANN/x64/Debug/ANN.tlog/CL.command.1.tlog
+*.sdf
 *.tlog
-x64/Debug/ANN.exe
+*.obj
 *.pdb
-x64/Debug/ANN.ilk
+*.exe
+*.ilk
+*.pdb
+*.log
 *.idb
-ANN/x64/Debug/main.obj
 *.opensdf
+*.psess
+*.vsp
