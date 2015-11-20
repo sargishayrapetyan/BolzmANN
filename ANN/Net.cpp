@@ -6,7 +6,7 @@ using namespace std;
 using namespace ANN;
 double Net::recentAverageSmoothingFactor_ = 100.0; // Number of training samples to average over
 
-void Net::getResults(vector<double> &resultVals) const
+void Net::getResults(vector<double>& resultVals) const
 {
     resultVals.clear();
 
@@ -15,11 +15,11 @@ void Net::getResults(vector<double> &resultVals) const
     }
 }
 
-void Net::backProp(const vector<double> &targetVals)
+void Net::backProp(const vector<double>& targetVals)
 {
     // Calculate overall net error (RMS of output neuron errors)
 
-    Layer &outputLayer = layers_.back();
+    Layer& outputLayer = layers_.back();
     error_ = 0.0;
 
     for (int n = 0; n < outputLayer.size() - 1; ++n) {
@@ -44,8 +44,8 @@ void Net::backProp(const vector<double> &targetVals)
     // Calculate hidden layer gradients
 
     for (size_t layerNum = layers_.size() - 2; layerNum > 0; --layerNum) {
-        Layer &hiddenLayer = layers_[layerNum];
-        Layer &nextLayer = layers_[layerNum + 1];
+        Layer& hiddenLayer = layers_[layerNum];
+        Layer& nextLayer = layers_[layerNum + 1];
 
         for (int n = 0; n < hiddenLayer.size(); ++n) {
             hiddenLayer[n].calcHiddenGradients(nextLayer);
@@ -56,8 +56,8 @@ void Net::backProp(const vector<double> &targetVals)
     // update connection weights
 
     for (size_t layerNum = layers_.size() - 1; layerNum > 0; --layerNum) {
-        Layer &layer = layers_[layerNum];
-        Layer &prevLayer = layers_[layerNum - 1];
+        Layer& layer = layers_[layerNum];
+        Layer& prevLayer = layers_[layerNum - 1];
 
         for (int n = 0; n < layer.size() - 1; ++n) {
             layer[n].updateInputWeights(prevLayer);
@@ -65,7 +65,7 @@ void Net::backProp(const vector<double> &targetVals)
     }
 }
 
-void Net::feedForward(const vector<double> &inputVals)
+void Net::feedForward(const vector<double>& inputVals)
 {
     assert(inputVals.size() == layers_[0].size() - 1);
 
@@ -76,14 +76,14 @@ void Net::feedForward(const vector<double> &inputVals)
 
     // forward propagate
     for (int layerNum = 1; layerNum < layers_.size(); ++layerNum) {
-        Layer &prevLayer = layers_[layerNum - 1];
+        Layer& prevLayer = layers_[layerNum - 1];
         for (int n = 0; n < layers_[layerNum].size() - 1; ++n) {
             layers_[layerNum][n].feedForward(prevLayer);
         }
     }
 }
 
-Net::Net(const vector<int> &topology)
+Net::Net(const vector<int>& topology)
 {
     size_t numLayers = topology.size();
     for (int layerNum = 0; layerNum < numLayers; ++layerNum) {

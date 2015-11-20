@@ -21,10 +21,10 @@ namespace ANN
 		Neuron(int numOutputs, int myIndex);
 		void setOutputVal(double val) { outputVal_ = val; }
 		double getOutputVal() const { return outputVal_; }
-		void feedForward(const Layer &prevLayer);
+		void feedForward(const Layer& prevLayer);
 		void calcOutputGradients(double targetVal);
-		void calcHiddenGradients(const Layer &nextLayer);
-		void updateInputWeights(Layer &prevLayer);
+		void calcHiddenGradients(const Layer& nextLayer);
+		void updateInputWeights(Layer& prevLayer);
 
 	private:
 		static double eta;   // [0.0..1.0] overall net training rate
@@ -32,7 +32,7 @@ namespace ANN
 		static double transferFunction(double x);
 		static double transferFunctionDerivative(double x);
 		static double randomWeight() { return rand() / double(RAND_MAX); }
-		double sumDOW(const Layer &nextLayer) const;
+		double sumDOW(const Layer& nextLayer) const;
 		double outputVal_;
 		vector<Connection> outputWeights_;
 		int myIndex_;
