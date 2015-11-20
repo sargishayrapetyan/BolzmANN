@@ -4,8 +4,8 @@
 #include <iostream>
 
 using namespace std;
+using namespace ANN;
 
-//using namespace ANN;
 void showVectorVals(string label, vector<double> &v)
 {
     cout << label << " ";
