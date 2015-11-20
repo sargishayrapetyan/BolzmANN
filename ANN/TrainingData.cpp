@@ -1,7 +1,7 @@
 #include "TrainingData.h"
 #include <sstream>
 using namespace ANN;
-void TrainingData::getTopology(vector<int> &topology)
+void TrainingData::getTopology(vector<int>& topology)
 {
     string line;
     string label;
@@ -27,7 +27,7 @@ TrainingData::TrainingData(const string filename)
     trainingDataFile_.open(filename.c_str());
 }
 
-int TrainingData::getNextInputs(vector<double> &inputVals)
+int TrainingData::getNextInputs(vector<double>& inputVals)
 {
     inputVals.clear();
 
@@ -47,7 +47,7 @@ int TrainingData::getNextInputs(vector<double> &inputVals)
     return static_cast<int>(inputVals.size());
 }
 
-int TrainingData::getTargetOutputs(vector<double> &targetOutputVals)
+int TrainingData::getTargetOutputs(vector<double>& targetOutputVals)
 {
     targetOutputVals.clear();
 

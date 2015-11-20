@@ -3,13 +3,13 @@ using namespace ANN;
 double Neuron::eta = 0.15;    // overall net learning rate, [0.0..1.0]
 double Neuron::alpha = 0.5;   // momentum, multiplier of last deltaWeight, [0.0..1.0]
 
-void Neuron::updateInputWeights(Layer &prevLayer)
+void Neuron::updateInputWeights(Layer& prevLayer)
 {
     // The weights to be updated are in the Connection container
     // in the neurons in the preceding layer
 
     for (int n = 0; n < prevLayer.size(); ++n) {
-        Neuron &neuron = prevLayer[n];
+        Neuron& neuron = prevLayer[n];
         double oldDeltaWeight = neuron.outputWeights_[myIndex_].deltaWeight;
 
         double newDeltaWeight =
@@ -26,7 +26,7 @@ void Neuron::updateInputWeights(Layer &prevLayer)
     }
 }
 
-double Neuron::sumDOW(const Layer &nextLayer) const
+double Neuron::sumDOW(const Layer& nextLayer) const
 {
     double sum = 0.0;
 
@@ -39,7 +39,7 @@ double Neuron::sumDOW(const Layer &nextLayer) const
     return sum;
 }
 
-void Neuron::calcHiddenGradients(const Layer &nextLayer)
+void Neuron::calcHiddenGradients(const Layer& nextLayer)
 {
     double dow = sumDOW(nextLayer);
     gradient_ = dow * Neuron::transferFunctionDerivative(outputVal_);
@@ -64,7 +64,7 @@ double Neuron::transferFunctionDerivative(double x)
     return 1.0 - x * x;
 }
 
-void Neuron::feedForward(const Layer &prevLayer)
+void Neuron::feedForward(const Layer& prevLayer)
 {
     double sum = 0.0;
 
