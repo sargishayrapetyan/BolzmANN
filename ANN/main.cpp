@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+//using namespace ANN;
 void showVectorVals(string label, vector<double> &v)
 {
     cout << label << " ";
