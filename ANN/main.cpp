@@ -9,7 +9,8 @@ using namespace ANN;
 void showVectorVals(string label, vector<double>& v)
 {
     cout << label << " ";
-    for (const auto& elem : v) {
+    for (const auto& elem : v) 
+	{
         cout << elem << " ";
     }
 

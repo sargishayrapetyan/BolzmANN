@@ -10,22 +10,21 @@ void Neuron::updateInputWeights(Layer& prevLayer)
     // The weights to be updated are in the Connection container
     // in the neurons in the preceding layer
 
-    for (int n = 0; n < prevLayer.size(); ++n) {
-        Neuron& neuron = prevLayer[n];
-        double oldDeltaWeight = neuron.outputWeights_[myIndex_].deltaWeight;
+	for (auto& neuron : prevLayer)
+	{
+		double oldDeltaWeight = neuron.outputWeights_[myIndex_].deltaWeight;
+		double newDeltaWeight =
+			// Individual input, magnified by the gradient and train rate:
+			eta
+			* neuron.getOutputVal()
+			* gradient_
+			// Also add momentum = a fraction of the previous delta weight;
+			+ alpha
+			* oldDeltaWeight;
 
-        double newDeltaWeight =
-            // Individual input, magnified by the gradient and train rate:
-            eta
-            * neuron.getOutputVal()
-            * gradient_
-            // Also add momentum = a fraction of the previous delta weight;
-            + alpha
-            * oldDeltaWeight;
-
-        neuron.outputWeights_[myIndex_].deltaWeight = newDeltaWeight;
-        neuron.outputWeights_[myIndex_].weight += newDeltaWeight;
-    }
+		neuron.outputWeights_[myIndex_].deltaWeight = newDeltaWeight;
+		neuron.outputWeights_[myIndex_].weight += newDeltaWeight;
+	}
 }
 
 double Neuron::sumDOW(const Layer& nextLayer) const
@@ -73,9 +72,9 @@ void Neuron::feedForward(const Layer& prevLayer)
     // Sum the previous layer's outputs (which are our inputs)
     // Include the bias node from the previous layer.
 
-    for (int n = 0; n < prevLayer.size(); ++n) {
-        sum += prevLayer[n].getOutputVal() *
-            prevLayer[n].outputWeights_[myIndex_].weight;
+    for (const auto& neuron : prevLayer) {
+        sum += neuron.getOutputVal() *
+            neuron.outputWeights_[myIndex_].weight;
     }
 
     outputVal_ = Neuron::transferFunction(sum);
