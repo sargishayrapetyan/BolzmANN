@@ -10,21 +10,21 @@ void Neuron::updateInputWeights(Layer& prevLayer)
     // The weights to be updated are in the Connection container
     // in the neurons in the preceding layer
 
-	for (auto& neuron : prevLayer)
-	{
-		double oldDeltaWeight = neuron.outputWeights_[myIndex_].deltaWeight;
-		double newDeltaWeight =
-			// Individual input, magnified by the gradient and train rate:
-			eta
-			* neuron.getOutputVal()
-			* gradient_
-			// Also add momentum = a fraction of the previous delta weight;
-			+ alpha
-			* oldDeltaWeight;
+    for (auto& neuron : prevLayer)
+    {
+        double oldDeltaWeight = neuron.outputWeights_[myIndex_].deltaWeight;
+        double newDeltaWeight =
+            // Individual input, magnified by the gradient and train rate:
+            eta
+            * neuron.getOutputVal()
+            * gradient_
+            // Also add momentum = a fraction of the previous delta weight;
+            + alpha
+            * oldDeltaWeight;
 
-		neuron.outputWeights_[myIndex_].deltaWeight = newDeltaWeight;
-		neuron.outputWeights_[myIndex_].weight += newDeltaWeight;
-	}
+        neuron.outputWeights_[myIndex_].deltaWeight = newDeltaWeight;
+        neuron.outputWeights_[myIndex_].weight += newDeltaWeight;
+    }
 }
 
 double Neuron::sumDOW(const Layer& nextLayer) const

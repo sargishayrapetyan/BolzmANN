@@ -10,7 +10,7 @@ void showVectorVals(string label, vector<double>& v)
 {
     cout << label << " ";
     for (const auto& elem : v) 
-	{
+    {
         cout << elem << " ";
     }
 
@@ -33,13 +33,13 @@ int main()
 
     while (!trainData.isEof()) {
         ++trainingPass;
-        cout << endl << "Pass " << trainingPass;
+        cout << endl << "Pass " << trainingPass << endl;
 
         // Get new input data and feed it forward:
         if (trainData.getNextInputs(inputVals) != topology[0]) {
             break;
         }
-        showVectorVals(": Inputs:", inputVals);
+        showVectorVals("Inputs:", inputVals);
         myNet.feedForward(inputVals);
 
         // Collect the net's actual output results:

@@ -10,11 +10,11 @@ void Net::getResults(vector<double>& resultVals) const
 {
     resultVals.clear();
 
-	const auto backLayer = layers_.back();
-	auto it = backLayer.begin();
-	const auto endIt = backLayer.end() - 1;
-	for (; it != endIt; ++it) 
-	{
+    const auto backLayer = layers_.back();
+    auto it = backLayer.begin();
+    const auto endIt = backLayer.end() - 1;
+    for (; it != endIt; ++it) 
+    {
         resultVals.push_back(it->getOutputVal());
     }
 }
@@ -26,7 +26,7 @@ void Net::backProp(const vector<double>& targetVals)
     error_ = 0.0;
 
     for (int n = 0; n < outputLayer.size() - 1; ++n) 
-	{
+    {
         double delta = targetVals[n] - outputLayer[n].getOutputVal();
         error_ += delta * delta;
     }
@@ -42,36 +42,36 @@ void Net::backProp(const vector<double>& targetVals)
     // Calculate output layer gradients
 
     for (int n = 0; n < outputLayer.size() - 1; ++n) 
-	{
+    {
         outputLayer[n].calcOutputGradients(targetVals[n]);
     }
 
     // Calculate hidden layer gradients
 
 
-	auto it = layers_.rbegin() + 2;
-	const auto endIt = layers_.rend();
-	for (; it != endIt; ++it) 
-	{
-	auto& hiddenLayer = *it;
-	const auto& nextLayer = *(it + 1);
+    auto it = layers_.rbegin() + 2;
+    const auto endIt = layers_.rend();
+    for (; it != endIt; ++it) 
+    {
+    auto& hiddenLayer = *it;
+    const auto& nextLayer = *(it + 1);
 
-		for (auto& neuron : hiddenLayer) 
-		{
-			neuron.calcHiddenGradients(nextLayer);
-		}
+        for (auto& neuron : hiddenLayer) 
+        {
+            neuron.calcHiddenGradients(nextLayer);
+        }
     }
 
     // For all layers from outputs to first hidden layer,
     // update connection weights
 
     for (size_t layerNum = layers_.size() - 1; layerNum > 0; --layerNum) 
-	{
+    {
         Layer& layer = layers_[layerNum];
         Layer& prevLayer = layers_[layerNum - 1];
 
         for (int n = 0; n < layer.size() - 1; ++n) 
-		{
+        {
             layer[n].updateInputWeights(prevLayer);
         }
     }
@@ -83,16 +83,16 @@ void Net::feedForward(const vector<double>& inputVals)
 
     // Assign (latch) the input values into the input neurons
     for (int i = 0; i < inputVals.size(); ++i) 
-	{
+    {
         layers_[0][i].setOutputVal(inputVals[i]);
     }
 
     // forward propagate
     for (int layerNum = 1; layerNum < layers_.size(); ++layerNum) 
-	{
+    {
         Layer& prevLayer = layers_[layerNum - 1];
         for (int n = 0; n < layers_[layerNum].size() - 1; ++n) 
-		{
+        {
             layers_[layerNum][n].feedForward(prevLayer);
         }
     }
@@ -107,8 +107,8 @@ Net::Net(const vector<int>& topology)
 
         // We have a new layer, now fill it with neurons, and
         // add a bias neuron in each layer.
-		const auto l = topology[layerNum];
-		for (int neuronNum = 0; neuronNum <= l; ++neuronNum) {
+        const auto l = topology[layerNum];
+        for (int neuronNum = 0; neuronNum <= l; ++neuronNum) {
             layers_.back().push_back(Neuron(numOutputs, neuronNum));
             cout << "Made a Neuron!" << endl;
         }
