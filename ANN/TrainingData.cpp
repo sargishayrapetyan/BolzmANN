@@ -4,10 +4,11 @@ using namespace ANN;
 void TrainingData::getTopology(vector<int>& topology)
 {
     string line;
-    string label;
 
     getline(trainingDataFile_, line);
     stringstream ss(line);
+
+    string label;
     ss >> label;
     if (this->isEof() || label.compare("topology:") != 0) {
         abort();

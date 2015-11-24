@@ -10,10 +10,11 @@ void Net::getResults(vector<double>& resultVals) const
 {
     resultVals.clear();
 
-    const auto backLayer = layers_.back();
-    auto it = backLayer.begin();
-    const auto endIt = backLayer.end() - 1;
-    for (; it != endIt; ++it) 
+    const auto& backLayer = layers_.back();
+
+    auto       it    = backLayer.begin();
+    const auto itEnd = backLayer.end() - 1;
+    for (; it != itEnd; ++it) 
     {
         resultVals.push_back(it->getOutputVal());
     }
@@ -48,13 +49,10 @@ void Net::backProp(const vector<double>& targetVals)
 
     // Calculate hidden layer gradients
 
-
-    auto it = layers_.rbegin() + 2;
-    const auto endIt = layers_.rend();
-    for (; it != endIt; ++it) 
+    for (unsigned layerNum = layers_.size() - 2; layerNum > 0; --layerNum) 
     {
-    auto& hiddenLayer = *it;
-    const auto& nextLayer = *(it + 1);
+        Layer& hiddenLayer = layers_[layerNum];
+        Layer& nextLayer   = layers_[layerNum + 1];
 
         for (auto& neuron : hiddenLayer) 
         {
@@ -67,7 +65,7 @@ void Net::backProp(const vector<double>& targetVals)
 
     for (size_t layerNum = layers_.size() - 1; layerNum > 0; --layerNum) 
     {
-        Layer& layer = layers_[layerNum];
+        Layer& layer     = layers_[layerNum];
         Layer& prevLayer = layers_[layerNum - 1];
 
         for (int n = 0; n < layer.size() - 1; ++n) 

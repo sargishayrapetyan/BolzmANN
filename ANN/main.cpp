@@ -54,8 +54,7 @@ int main()
         myNet.backProp(targetVals);
 
         // Report how well the training is working, average over recent samples:
-        cout << "Net recent average error: "
-            << myNet.getRecentAverageError() << endl;
+        cout << "Net recent average error: " << myNet.getRecentAverageError() << endl;
     }
 
     cout << endl << "Done" << endl;
