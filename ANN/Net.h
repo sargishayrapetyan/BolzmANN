@@ -6,20 +6,20 @@ using namespace std;
 
 namespace ANN
 {
-	class Net
-	{
-	public:
-		Net(const vector<int>& topology);
-		void   feedForward(const vector<double>& inputVals);
-		void   backProp(const vector<double>& targetVals);
-	        vector<double>   getResults() const;
-		double getRecentAverageError() const { return recentAverageError_; }
+    class Net
+    {
+    public:
+        Net(const vector<int>& topology);      
+        vector<double> getResults() const;
+        double         getRecentAverageError() const { return recentAverageError_; }
+        void           feedForward(const vector<double>& inputVals);
+        void           backProp(const vector<double>& targetVals);
 
-	private:
-		vector<Layer> layers_; // layers_[layerNum][neuronNum]
-		double        error_;
-		double        recentAverageError_;
-		static double recentAverageSmoothingFactor_;
-	};
+    private:
+        vector<Layer> layers_; // layers_[layerNum][neuronNum]
+        double        error_;
+        double        recentAverageError_;
+        static double recentAverageSmoothingFactor_;
+    };
 }
 #endif // NET_H
