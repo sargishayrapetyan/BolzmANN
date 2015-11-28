@@ -43,7 +43,7 @@ int main()
         myNet.feedForward(inputVals);
 
         // Collect the net's actual output results:
-        myNet.getResults(resultVals);
+        myNet.getResults();
         showVectorVals("Outputs:", resultVals);
 
         // Train the net what the outputs should have been:
