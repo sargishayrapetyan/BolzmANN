@@ -6,9 +6,9 @@ using namespace std;
 using namespace ANN;
 double Net::recentAverageSmoothingFactor_ = 100.0; // Number of training samples to average over
 
-void Net::getResults(vector<double>& resultVals) const
+vector<double> Net::getResults() const
 {
-    resultVals.clear();
+    vector<double> resultVals;
 
     const auto& backLayer = layers_.back();
 
@@ -18,6 +18,7 @@ void Net::getResults(vector<double>& resultVals) const
     {
         resultVals.push_back(it->getOutputVal());
     }
+    return  resultVals;
 }
 void Net::backProp(const vector<double>& targetVals)
 {

@@ -12,7 +12,7 @@ namespace ANN
 		Net(const vector<int>& topology);
 		void   feedForward(const vector<double>& inputVals);
 		void   backProp(const vector<double>& targetVals);
-		void   getResults(vector<double>& resultVals) const;
+	        vector<double>   getResults() const;
 		double getRecentAverageError() const { return recentAverageError_; }
 
 	private:
