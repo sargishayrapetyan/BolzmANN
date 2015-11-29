@@ -17,11 +17,12 @@ void showVectorVals(string label, vector<double>& v)
     cout << endl;
 }
 
+
 int main()
 {
     TrainingData trainData("trainingData.txt");
 
-    // e.g., { 3, 2, 1 }
+    //e.g., { 3, 2, 1 }
     vector<int> topology;
     topology = trainData.getTopology();
 
