@@ -1,8 +1,9 @@
 #include "TrainingData.h"
 #include <sstream>
 using namespace ANN;
-void TrainingData::getTopology(vector<int>& topology)
+vector<int> TrainingData::getTopology()
 {
+    vector<int> topology;
     string line;
 
     getline(trainingDataFile_, line);
@@ -20,7 +21,7 @@ void TrainingData::getTopology(vector<int>& topology)
         topology.push_back(n);
     }
 
-    return;
+    return topology;
 }
 
 TrainingData::TrainingData(const string filename)
