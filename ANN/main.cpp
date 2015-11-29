@@ -17,7 +17,6 @@ void showVectorVals(string label, vector<double>& v)
     cout << endl;
 }
 
-
 int main()
 {
     TrainingData trainData("trainingData.txt");
