@@ -1,10 +1,12 @@
 #include "TrainingData.h"
 #include <sstream>
+
 using namespace ANN;
+
 vector<int> TrainingData::getTopology()
 {
     vector<int> topology;
-    string line;
+    string      line;
 
     getline(trainingDataFile_, line);
     stringstream ss(line);

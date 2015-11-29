@@ -4,6 +4,7 @@
 
 using namespace std;
 using namespace ANN;
+
 double Net::recentAverageSmoothingFactor_ = 100.0; // Number of training samples to average over
 
 vector<double> Net::getResults() const
@@ -33,13 +34,11 @@ void Net::backProp(const vector<double>& targetVals)
         error_ += delta * delta;
     }
     error_ /= outputLayer.size() - 1; // get average error squared
-    error_ = sqrt(error_); // RMS
+    error_ = sqrt(error_);            // RMS
 
-                             // Implement a recent average measurement
-
-    recentAverageError_ =
-        (recentAverageError_ * recentAverageSmoothingFactor_ + error_)
-        / (recentAverageSmoothingFactor_ + 1.0);
+    // Implement a recent average measurement
+    recentAverageError_ = (recentAverageError_ * recentAverageSmoothingFactor_ + error_)
+                        / (                      recentAverageSmoothingFactor_ + 1.0);
 
     // Calculate output layer gradients
 
@@ -50,7 +49,7 @@ void Net::backProp(const vector<double>& targetVals)
 
     // Calculate hidden layer gradients
 
-    for (unsigned layerNum = layers_.size() - 2; layerNum > 0; --layerNum) 
+    for (size_t layerNum = layers_.size() - 2; layerNum > 0; --layerNum) 
     {
         Layer& hiddenLayer = layers_[layerNum];
         Layer& nextLayer   = layers_[layerNum + 1];
@@ -86,7 +85,7 @@ void Net::feedForward(const vector<double>& inputVals)
         layers_[0][i].setOutputVal(inputVals[i]);
     }
 
-    // forward propagate
+    // Forward propagate
     for (int layerNum = 1; layerNum < layers_.size(); ++layerNum) 
     {
         Layer& prevLayer = layers_[layerNum - 1];
@@ -100,16 +99,17 @@ void Net::feedForward(const vector<double>& inputVals)
 Net::Net(const vector<int>& topology)
 {
     size_t numLayers = topology.size();
+
     for (int layerNum = 0; layerNum < numLayers; ++layerNum) {
         layers_.push_back(Layer());
         int numOutputs = layerNum == topology.size() - 1 ? 0 : topology[layerNum + 1];
 
-        // We have a new layer, now fill it with neurons, and
-        // add a bias neuron in each layer.
-        const auto l = topology[layerNum];
-        for (int neuronNum = 0; neuronNum <= l; ++neuronNum) {
+        // We have a new layer, now fill it with neurons,
+        // and add a bias neuron in each layer.
+        const auto L = topology[layerNum];
+        for (int neuronNum = 0; neuronNum <= L; ++neuronNum) {
             layers_.back().push_back(Neuron(numOutputs, neuronNum));
-            cout << "Made a Neuron!" << endl;
+            cout << "Neuron made." << endl;
         }
 
         // Force the bias node's output to 1.0 (it was the last neuron pushed in this layer):

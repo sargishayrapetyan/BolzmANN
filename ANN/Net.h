@@ -2,6 +2,7 @@
 #define  NET_H
 
 #include "Neuron.h"
+
 using namespace std;
 
 namespace ANN
@@ -22,4 +23,5 @@ namespace ANN
         static double recentAverageSmoothingFactor_;
     };
 }
+
 #endif // NET_H

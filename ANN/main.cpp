@@ -9,6 +9,7 @@ using namespace ANN;
 void showVectorVals(string label, vector<double>& v)
 {
     cout << label << " ";
+
     for (const auto& elem : v) 
     {
         cout << elem << " ";
@@ -17,12 +18,11 @@ void showVectorVals(string label, vector<double>& v)
     cout << endl;
 }
 
-
 int main()
 {
     TrainingData trainData("trainingData.txt");
 
-    //e.g., { 3, 2, 1 }
+    // e.g., { 3, 2, 1 }
     vector<int> topology;
     topology = trainData.getTopology();
 
@@ -33,13 +33,13 @@ int main()
 
     while (!trainData.isEof()) {
         ++trainingPass;
-        cout << endl << "Pass " << trainingPass << endl;
+        cout << endl << "Pass:    " << trainingPass << endl;
 
         // Get new input data and feed it forward:
         if (trainData.getNextInputs(inputVals) != topology[0]) {
             break;
         }
-        showVectorVals("Inputs:", inputVals);
+        showVectorVals("Inputs: ", inputVals);
         myNet.feedForward(inputVals);
 
         // Collect the net's actual output results:
@@ -54,7 +54,9 @@ int main()
         myNet.backProp(targetVals);
 
         // Report how well the training is working, average over recent samples:
+        cout << "-----------------------------------" << endl;
         cout << "Net recent average error: " << myNet.getRecentAverageError() << endl;
+        cout << "-----------------------------------" << endl;
     }
 
     cout << endl << "Done" << endl;
