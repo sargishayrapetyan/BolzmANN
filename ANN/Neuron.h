@@ -24,7 +24,7 @@ namespace ANN
 		void   feedForward(const Layer& prevLayer);
 		void   calcOutputGradients(double targetVal);
 		void   calcHiddenGradients(const Layer& nextLayer);
-		void   updateInputWeights(const Layer& prevLayer);
+		void   updateInputWeights(Layer& prevLayer);
 
 	private:
 		static double eta;   // [0.0..1.0] overall net training rate

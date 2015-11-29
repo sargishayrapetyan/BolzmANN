@@ -24,7 +24,7 @@ int main()
 
     // e.g., { 3, 2, 1 }
     vector<int> topology;
-    topology=trainData.getTopology();
+    topology = trainData.getTopology();
 
     Net myNet(topology);
 
