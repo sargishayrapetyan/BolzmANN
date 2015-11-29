@@ -74,6 +74,5 @@ struct Queue : std::queue<T>
     }
 };
 
-
 #endif // LIBRARY_H
 
