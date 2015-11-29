@@ -13,7 +13,7 @@ namespace ANN
 	public:
 		TrainingData(const string filename);
 		bool isEof() { return trainingDataFile_.eof(); }
-		void getTopology(vector<int>& topology);
+		vector<int> getTopology();
 
 		// Returns the number of input values read from the file:
 		int getNextInputs(vector<double>& inputVals);
