@@ -1,14 +1,16 @@
-#This script will detect all tab characters.
+﻿# This script will detect all tab characters.
 
-#First module provides a portable way of using operating system dependent functionality.
-#Second module provides work with regular expressions.
-import os, re
+# First module provides a portable way of using operating system dependent functionality.
+import os
 
-#Receive path of the necessary directory.
+# Second module provides work with regular expressions.
+import re
+
+# Receive path of the necessary directory.
 os.chdir("../ANN")
 path = os.getcwd()
 
-#Grep given pattern in given file.
+# Grep given pattern in given file.
 fileList = []
 
 def grep(pattern, fileList):
@@ -27,7 +29,7 @@ def grep(pattern, fileList):
         print("PASS: No tab characters.")  
     f.close()
   
-#Receive file list of the necessary extensions.
+# Receive file list of the necessary extensions.
 files = os.listdir(path)
 
 for f in files:
@@ -35,6 +37,6 @@ for f in files:
     if ( file.endswith(".h")) or (file.endswith(".cpp")) or (file.endswith(".txt") ):
         fileList += [file]
 
-#Function call.        
+# Function call.        
 grep("\t", fileList)
            
