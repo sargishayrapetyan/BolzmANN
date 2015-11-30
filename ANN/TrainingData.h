@@ -6,6 +6,7 @@
 #include <string>
 
 using namespace std;
+
 namespace ANN
 {
     class TrainingData
@@ -23,4 +24,5 @@ namespace ANN
         ifstream trainingDataFile_;
     };
 }
+
 #endif // TRAININGDATA_H
