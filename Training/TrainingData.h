@@ -26,3 +26,4 @@ namespace ANN
 }
 
 #endif // TRAININGDATA_H
+
