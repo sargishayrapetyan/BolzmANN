@@ -55,3 +55,10 @@ Temporary Items
 *.psess
 *.vsp
 *.opendb
+*.lib
+*.nativecodeanalysis.xml
+*.nativecodeanalysis.all.xml
+*.lastcodeanalysissucceeded
+*.lastcodeanalysissucceeded
+*.nupkg
+packages\*
