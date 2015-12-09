@@ -35,10 +35,10 @@ namespace ANN
 
         static double      eta;             // [0.0..1.0] overall net training rate
         static double      alpha;           // [0.0..n] multiplier of last weight change (momentum)
-		double             outputVal_;
-		vector<Connection> outputWeights_;
-		int                myIndex_;
+        double             outputVal_;
 		double             gradient_;
+        int                myIndex_;
+        vector<Connection> outputWeights_;
 	};
 }
 

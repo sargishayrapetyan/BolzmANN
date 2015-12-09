@@ -96,7 +96,7 @@ void Net::feedForward(const vector<double>& inputVals)
     }
 }
 
-Net::Net(const vector<int>& topology)
+Net::Net(const vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
 {
     size_t numLayers = topology.size();
 

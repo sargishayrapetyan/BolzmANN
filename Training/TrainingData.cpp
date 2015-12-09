@@ -26,7 +26,7 @@ vector<int> TrainingData::getTopology()
     return topology;
 }
 
-TrainingData::TrainingData(const string filename)
+TrainingData::TrainingData(const string& filename)
 {
     trainingDataFile_.open(filename.c_str());
 }
