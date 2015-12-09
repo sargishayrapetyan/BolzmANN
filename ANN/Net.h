@@ -2,8 +2,8 @@
 #define  NET_H
 
 #include "Neuron.h"
-
-using namespace std;
+#include <iostream>
+#include <cassert>
 
 namespace ANN
 {
@@ -19,7 +19,7 @@ namespace ANN
     private:
         double        error_;
         double        recentAverageError_;
-        vector<Layer> layers_; // layers_[layerNum][neuronNum]
+        vector<Layer> layers_;                       // layers_[layerNum][neuronNum]
         static double recentAverageSmoothingFactor_;
     };
 }

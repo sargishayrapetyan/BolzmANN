@@ -1,8 +1,5 @@
 #include "Net.h"
-#include <iostream>
-#include <cassert>
 
-using namespace std;
 using namespace ANN;
 
 double Net::recentAverageSmoothingFactor_ = 100.0; // Number of training samples to average over

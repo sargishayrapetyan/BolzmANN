@@ -1,9 +1,6 @@
 #include "TrainingData.h"
 #include "Net.h"
-#include <cassert>
-#include <iostream>
 
-using namespace std;
 using namespace ANN;
 
 void showVectorVals(string label, vector<double>& v)
