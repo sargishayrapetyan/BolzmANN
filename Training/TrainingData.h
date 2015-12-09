@@ -12,7 +12,7 @@ namespace ANN
     class TrainingData
     {
     public:
-        TrainingData(const string filename);
+        explicit TrainingData(const string& filename);
         vector<int> getTopology();
         bool        isEof() { return trainingDataFile_.eof(); }
 
