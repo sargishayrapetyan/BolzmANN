@@ -1,5 +1,7 @@
 #include "TrainingData.h"
 #include "Net.h"
+#include <iostream>
+#include <cassert>
 
 using namespace ANN;
 

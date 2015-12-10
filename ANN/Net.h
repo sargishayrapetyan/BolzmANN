@@ -2,8 +2,6 @@
 #define  NET_H
 
 #include "Neuron.h"
-#include <iostream>
-#include <cassert>
 
 namespace ANN
 {

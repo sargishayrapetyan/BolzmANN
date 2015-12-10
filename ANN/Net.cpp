@@ -1,4 +1,6 @@
 #include "Net.h"
+#include <iostream>
+#include <cassert>
 
 using namespace ANN;
 
