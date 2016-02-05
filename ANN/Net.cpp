@@ -6,9 +6,9 @@ using namespace ANN;
 
 double Net::recentAverageSmoothingFactor_ = 100.0; // Number of training samples to average over
 
-vector<double> Net::getResults() const
+std::vector<double> Net::getResults() const
 {
-    vector<double> resultVals;
+    std::vector<double> resultVals;
 
     const auto& backLayer = layers_.back();
 
@@ -20,7 +20,7 @@ vector<double> Net::getResults() const
     }
     return resultVals;
 }
-void Net::backProp(const vector<double>& targetVals)
+void Net::backProp(const std::vector<double>& targetVals)
 {
     // Calculate overall net error (RMS of output neuron errors)
 
@@ -74,7 +74,7 @@ void Net::backProp(const vector<double>& targetVals)
     }
 }
 
-void Net::feedForward(const vector<double>& inputVals)
+void Net::feedForward(const std::vector<double>& inputVals)
 {
     assert(inputVals.size() == layers_[0].size() - 1);
 
@@ -95,7 +95,7 @@ void Net::feedForward(const vector<double>& inputVals)
     }
 }
 
-Net::Net(const vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
+Net::Net(const std::vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
 {
     size_t numLayers = topology.size();
 
@@ -110,7 +110,7 @@ Net::Net(const vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
         for (int neuronNum = 0; neuronNum <= L; ++neuronNum)
         {
             layers_.back().emplace_back(Neuron(numOutputs, neuronNum));
-            cout << "Neuron made." << endl;
+            std::cout << "Neuron made." << std::endl;
         }
 
         // Force the bias node's output to 1.0 (it was the last neuron pushed in this layer):

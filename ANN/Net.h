@@ -8,17 +8,17 @@ namespace ANN
     class Net
     {
     public:
-        explicit Net(const vector<int>& topology);      
-        vector<double> getResults() const;
-        double         getRecentAverageError() const { return recentAverageError_; }
-        void           feedForward(const vector<double>& inputVals);
-        void           backProp(const vector<double>& targetVals);
+        explicit Net(const std::vector<int>& topology);      
+        std::vector<double> getResults() const;
+        double              getRecentAverageError() const { return recentAverageError_; }
+        void                feedForward(const std::vector<double>& inputVals);
+        void                backProp(const std::vector<double>& targetVals);
 
     private:
-        double        error_;
-        double        recentAverageError_;
-        vector<Layer> layers_;                       // layers_[layerNum][neuronNum]
-        static double recentAverageSmoothingFactor_;
+        double             error_;
+        double             recentAverageError_;
+        std::vector<Layer> layers_;                       // layers_[layerNum][neuronNum]
+        static double      recentAverageSmoothingFactor_;
     };
 }
 

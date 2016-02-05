@@ -3,15 +3,15 @@
 
 using namespace ANN;
 
-vector<int> TrainingData::getTopology()
+std::vector<int> TrainingData::getTopology()
 {
-    vector<int> topology;
-    string      line;
+    std::vector<int> topology;
+    std::string      line;
 
     getline(trainingDataFile_, line);
-    stringstream ss(line);
+    std::stringstream ss(line);
 
-    string label;
+    std::string label;
     ss >> label;
     if (isEof() || label != "topology:") 
     {
@@ -28,20 +28,20 @@ vector<int> TrainingData::getTopology()
     return topology;
 }
 
-TrainingData::TrainingData(const string& filename)
+TrainingData::TrainingData(const std::string& filename)
 {
     trainingDataFile_.open(filename.c_str());
 }
 
-int TrainingData::getNextInputs(vector<double>& inputVals)
+int TrainingData::getNextInputs(std::vector<double>& inputVals)
 {
     inputVals.clear();
 
-    string line;
+    std::string line;
     getline(trainingDataFile_, line);
-    stringstream ss(line);
+    std::stringstream ss(line);
 
-    string label;
+    std::string label;
     ss >> label;
     if (label == "in:")
     {
@@ -55,15 +55,15 @@ int TrainingData::getNextInputs(vector<double>& inputVals)
     return static_cast<int>(inputVals.size());
 }
 
-int TrainingData::getTargetOutputs(vector<double>& targetOutputVals)
+int TrainingData::getTargetOutputs(std::vector<double>& targetOutputVals)
 {
     targetOutputVals.clear();
 
-    string line;
+    std::string line;
     getline(trainingDataFile_, line);
-    stringstream ss(line);
+    std::stringstream ss(line);
 
-    string label;
+    std::string label;
     ss >> label;
     if (label == "out:")
     {

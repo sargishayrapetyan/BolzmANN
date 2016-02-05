@@ -5,23 +5,21 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
-
 namespace ANN
 {
     class TrainingData
     {
     public:
-        explicit TrainingData(const string& filename);
-        vector<int> getTopology();
-        bool        isEof() { return trainingDataFile_.eof(); }
+        explicit TrainingData(const std::string& filename);
+        std::vector<int> getTopology();
+        bool             isEof() { return trainingDataFile_.eof(); }
 
         // Returns the number of input values read from the file:
-        int getNextInputs(vector<double>& inputVals);
-        int getTargetOutputs(vector<double>& targetOutputVals);
+        int getNextInputs(std::vector<double>& inputVals);
+        int getTargetOutputs(std::vector<double>& targetOutputVals);
 
     private:
-        ifstream trainingDataFile_;
+        std::ifstream trainingDataFile_;
     };
 }
 

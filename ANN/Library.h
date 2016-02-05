@@ -9,9 +9,9 @@
 #include <queue>
 
 template<typename T>
-struct Vector : std::vector<T>
+struct std::vector : std::std::vector<T>
 {
-    using My = Vector;
+    using My = std::vector;
 
     bool contains(const T& x) const
     {
