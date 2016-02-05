@@ -18,7 +18,7 @@ vector<double> Net::getResults() const
     {
         resultVals.push_back(it->getOutputVal());
     }
-    return  resultVals;
+    return resultVals;
 }
 void Net::backProp(const vector<double>& targetVals)
 {
@@ -99,14 +99,16 @@ Net::Net(const vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
 {
     size_t numLayers = topology.size();
 
-    for (int layerNum = 0; layerNum < numLayers; ++layerNum) {
+    for (int layerNum = 0; layerNum < numLayers; ++layerNum) 
+    {
         layers_.push_back(Layer());
         int numOutputs = layerNum == topology.size() - 1 ? 0 : topology[layerNum + 1];
 
         // We have a new layer, now fill it with neurons,
         // and add a bias neuron in each layer.
         const auto L = topology[layerNum];
-        for (int neuronNum = 0; neuronNum <= L; ++neuronNum) {
+        for (int neuronNum = 0; neuronNum <= L; ++neuronNum)
+        {
             layers_.back().push_back(Neuron(numOutputs, neuronNum));
             cout << "Neuron made." << endl;
         }

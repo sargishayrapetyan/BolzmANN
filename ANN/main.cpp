@@ -5,7 +5,7 @@
 
 using namespace ANN;
 
-void showVectorVals(string label, vector<double>& v)
+void showVectorVals(const string& label, const vector<double>& v)
 {
     cout << label << " ";
 
@@ -27,15 +27,19 @@ int main()
 
     Net myNet(topology);
 
-    vector<double> inputVals, targetVals, resultVals;
-    int trainingPass = 0;
+    vector<double> inputVals; 
+    vector<double> targetVals;
+    vector<double> resultVals;
+    int            trainingPass = 0;
 
-    while (!trainData.isEof()) {
+    while (!trainData.isEof()) 
+    {
         ++trainingPass;
         cout << endl << "Pass:    " << trainingPass << endl;
 
         // Get new input data and feed it forward:
-        if (trainData.getNextInputs(inputVals) != topology[0]) {
+        if (trainData.getNextInputs(inputVals) != topology[0]) 
+        {
             break;
         }
         showVectorVals("Inputs: ", inputVals);
