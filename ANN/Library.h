@@ -15,13 +15,13 @@ struct Vector : std::vector<T>
 
     bool contains(const T& x) const
     {
-        return (std::find(My::begin(), My::end(), x) != My::end());
+        return std::find(My::begin(), My::end(), x) != My::end();
     }
 
     template<typename Pred>
     bool contains(Pred p) const
     {
-        return (std::find_if(My::begin(), My::end(), p) != My::end());
+        return std::find_if(My::begin(), My::end(), p) != My::end();
     }
 };
 
@@ -32,13 +32,13 @@ struct List : std::list<T>
 
     bool contains(const T& x) const 
     {
-        return (My::find(x) != My::end());
+        return My::find(x) != My::end();
     }
 
     template<typename Pred>
     bool contains(Pred p) const
     {
-        return (std::find_if(My::begin(), My::end(), p) != My::end());
+        return std::find_if(My::begin(), My::end(), p) != My::end();
     }
 };
 
@@ -49,13 +49,13 @@ struct Map : std::map<K, T>
 
     bool contains(const K& key) const
     {
-        return (My::find(key) != My::end());
+        return My::find(key) != My::end();
     }
 
     template<typename Pred>
     bool contains(Pred p) const
     {
-        return (std::find_if(My::begin(), My::end(), p) != My::end());
+        return std::find_if(My::begin(), My::end(), p) != My::end();
     }
 };
 
@@ -66,13 +66,13 @@ struct Set : std::set<K>
 
     bool contains(const K& key) const
     {
-        return (My::find(key) != My::end());
+        return My::find(key) != My::end();
     }
 
     template<typename Pred>
     bool contains(Pred p) const
     {
-        return (std::find_if(My::begin(), My::end(), p) != My::end());
+        return std::find_if(My::begin(), My::end(), p) != My::end();
     }
 };
 
@@ -83,13 +83,13 @@ struct Stack : std::stack<T>
 
     bool contains(const T& x) const
     {
-        return (std::find(My::begin(), My::end(), x) != My::end());
+        return std::find(My::begin(), My::end(), x) != My::end();
     }
 
     template<typename Pred>
     bool contains(Pred p) const
     {
-        return (std::find_if(My::begin(), My::end(), p) != My::end());
+        return std::find_if(My::begin(), My::end(), p) != My::end();
     }
 };
 
@@ -100,13 +100,13 @@ struct Queue : std::queue<T>
 
     bool contains(const T& x) const
     {
-        return (std::find(My::begin(), My::end(), x) != My::end());
+        return std::find(My::begin(), My::end(), x) != My::end();
     }
 
     template<typename Pred>
     bool contains(Pred p) const
     {
-        return (std::find_if(My::begin(), My::end(), p) != My::end());
+        return std::find_if(My::begin(), My::end(), p) != My::end();
     }
 };
 
