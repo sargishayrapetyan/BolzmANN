@@ -22,7 +22,7 @@ vector<int> TrainingData::getTopology()
     {
         int n;
         ss >> n;
-        topology.push_back(n);
+        topology.emplace_back(n);
     }
 
     return topology;
@@ -48,7 +48,7 @@ int TrainingData::getNextInputs(vector<double>& inputVals)
         double oneValue;
         while (ss >> oneValue) 
         {
-            inputVals.push_back(oneValue);
+            inputVals.emplace_back(oneValue);
         }
     }
 
@@ -70,7 +70,7 @@ int TrainingData::getTargetOutputs(vector<double>& targetOutputVals)
         double oneValue;
         while (ss >> oneValue) 
         {
-            targetOutputVals.push_back(oneValue);
+            targetOutputVals.emplace_back(oneValue);
         }
     }
 

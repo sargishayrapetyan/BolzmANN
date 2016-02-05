@@ -83,7 +83,7 @@ Neuron::Neuron(int numOutputs, int myIndex) : outputVal_(0.0), gradient_(0.0)
 {
     for (int c = 0; c < numOutputs; ++c)
     {
-        outputWeights_.push_back(Connection());
+        outputWeights_.emplace_back(Connection());
         outputWeights_.back().weight = randomWeight();
     }
 
