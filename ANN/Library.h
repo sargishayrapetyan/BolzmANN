@@ -9,7 +9,7 @@
 #include <queue>
 
 template<typename T>
-struct Vector : std::vector<T>
+struct Vector : std::std::vector<T>
 {
     using My = Vector;
 
