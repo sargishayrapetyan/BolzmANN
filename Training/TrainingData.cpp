@@ -13,11 +13,13 @@ vector<int> TrainingData::getTopology()
 
     string label;
     ss >> label;
-    if (this->isEof() || label.compare("topology:") != 0) {
+    if (isEof() || label != "topology:") 
+    {
         abort();
     }
 
-    while (!ss.eof()) {
+    while (!ss.eof()) 
+    {
         int n;
         ss >> n;
         topology.push_back(n);
@@ -41,9 +43,11 @@ int TrainingData::getNextInputs(vector<double>& inputVals)
 
     string label;
     ss >> label;
-    if (label.compare("in:") == 0) {
+    if (label == "in:")
+    {
         double oneValue;
-        while (ss >> oneValue) {
+        while (ss >> oneValue) 
+        {
             inputVals.push_back(oneValue);
         }
     }
@@ -61,9 +65,11 @@ int TrainingData::getTargetOutputs(vector<double>& targetOutputVals)
 
     string label;
     ss >> label;
-    if (label.compare("out:") == 0) {
+    if (label == "out:")
+    {
         double oneValue;
-        while (ss >> oneValue) {
+        while (ss >> oneValue) 
+        {
             targetOutputVals.push_back(oneValue);
         }
     }

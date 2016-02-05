@@ -20,16 +20,16 @@ namespace ANN
 	{
 	public:
 		Neuron(int numOutputs, int myIndex);
-		void   setOutputVal(double val)              { outputVal_ = val; }
+		void   setOutputVal(const double val)        { outputVal_ = val; }
 		double getOutputVal() const                  { return outputVal_; }
 		void   feedForward(const Layer& prevLayer);
-		void   calcOutputGradients(double targetVal);
+		void   calcOutputGradients(const double targetVal);
 		void   calcHiddenGradients(const Layer& nextLayer);
 		void   updateInputWeights(Layer& prevLayer);
 
 	private:
-		static double transferFunction(double x);
-		static double transferFunctionDerivative(double x);
+		static double transferFunction(const double x);
+		static double transferFunctionDerivative(const double x);
 		static double randomWeight()                            { return rand() / double(RAND_MAX); }
 		       double sumDOW(const Layer& nextLayer) const;
 

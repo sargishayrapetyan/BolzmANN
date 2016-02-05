@@ -30,7 +30,8 @@ double Neuron::sumDOW(const Layer& nextLayer) const
 
     // Sum our contributions of the errors at the nodes we feed.
 
-    for (int n = 0; n < nextLayer.size() - 1; ++n) {
+    for (int n = 0; n < nextLayer.size() - 1; ++n)
+    {
         sum += outputWeights_[n].weight * nextLayer[n].gradient_;
     }
 
@@ -40,23 +41,23 @@ double Neuron::sumDOW(const Layer& nextLayer) const
 void Neuron::calcHiddenGradients(const Layer& nextLayer)
 {
     double dow = sumDOW(nextLayer);
-    gradient_ = dow * Neuron::transferFunctionDerivative(outputVal_);
+    gradient_  = dow * Neuron::transferFunctionDerivative(outputVal_);
 }
 
-void Neuron::calcOutputGradients(double targetVal)
+void Neuron::calcOutputGradients(const double targetVal)
 {
     double delta = targetVal - outputVal_;
-    gradient_ = delta * Neuron::transferFunctionDerivative(outputVal_);
+    gradient_    = delta * Neuron::transferFunctionDerivative(outputVal_);
 }
 
-double Neuron::transferFunction(double x)
+double Neuron::transferFunction(const double x)
 {
     // tanh - output range [-1.0..1.0]
 
     return tanh(x);
 }
 
-double Neuron::transferFunctionDerivative(double x)
+double Neuron::transferFunctionDerivative(const double x)
 {
     // tanh derivative
     return 1.0 - x * x;
@@ -69,9 +70,10 @@ void Neuron::feedForward(const Layer& prevLayer)
     // Sum the previous layer's outputs (which are our inputs)
     // Include the bias node from the previous layer.
 
-    for (const auto& neuron : prevLayer) {
+    for (const auto& neuron : prevLayer) 
+    {
         sum += neuron.getOutputVal() *
-            neuron.outputWeights_[myIndex_].weight;
+               neuron.outputWeights_[myIndex_].weight;
     }
 
     outputVal_ = Neuron::transferFunction(sum);
@@ -79,7 +81,8 @@ void Neuron::feedForward(const Layer& prevLayer)
 
 Neuron::Neuron(int numOutputs, int myIndex) : outputVal_(0.0), gradient_(0.0)
 {
-    for (int c = 0; c < numOutputs; ++c) {
+    for (int c = 0; c < numOutputs; ++c)
+    {
         outputWeights_.push_back(Connection());
         outputWeights_.back().weight = randomWeight();
     }
