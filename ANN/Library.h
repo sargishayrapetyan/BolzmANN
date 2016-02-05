@@ -9,13 +9,19 @@
 #include <queue>
 
 template<typename T>
-struct Vector : std::std::vector<T>
+struct Vector : std::vector<T>
 {
     using My = Vector;
 
     bool contains(const T& x) const
     {
         return (std::find(My::begin(), My::end(), x) != My::end());
+    }
+
+    template<typename Pred>
+    bool contains(Pred p) const
+    {
+        return (std::find_if(My::begin(), My::end(), p) != My::end());
     }
 };
 
@@ -28,6 +34,12 @@ struct List : std::list<T>
     {
         return (My::find(x) != My::end());
     }
+
+    template<typename Pred>
+    bool contains(Pred p) const
+    {
+        return (std::find_if(My::begin(), My::end(), p) != My::end());
+    }
 };
 
 template<typename K, typename T>
@@ -38,6 +50,12 @@ struct Map : std::map<K, T>
     bool contains(const K& key) const
     {
         return (My::find(key) != My::end());
+    }
+
+    template<typename Pred>
+    bool contains(Pred p) const
+    {
+        return (std::find_if(My::begin(), My::end(), p) != My::end());
     }
 };
 
@@ -50,6 +68,12 @@ struct Set : std::set<K>
     {
         return (My::find(key) != My::end());
     }
+
+    template<typename Pred>
+    bool contains(Pred p) const
+    {
+        return (std::find_if(My::begin(), My::end(), p) != My::end());
+    }
 };
 
 template<typename T>
@@ -61,6 +85,12 @@ struct Stack : std::stack<T>
     {
         return (std::find(My::begin(), My::end(), x) != My::end());
     }
+
+    template<typename Pred>
+    bool contains(Pred p) const
+    {
+        return (std::find_if(My::begin(), My::end(), p) != My::end());
+    }
 };
 
 template<typename T>
@@ -71,6 +101,12 @@ struct Queue : std::queue<T>
     bool contains(const T& x) const
     {
         return (std::find(My::begin(), My::end(), x) != My::end());
+    }
+
+    template<typename Pred>
+    bool contains(Pred p) const
+    {
+        return (std::find_if(My::begin(), My::end(), p) != My::end());
     }
 };
 
