@@ -16,7 +16,7 @@ vector<double> Net::getResults() const
     const auto itEnd = backLayer.end() - 1;
     for (; it != itEnd; ++it) 
     {
-        resultVals.push_back(it->getOutputVal());
+        resultVals.emplace_back(it->getOutputVal());
     }
     return resultVals;
 }
@@ -101,7 +101,7 @@ Net::Net(const vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
 
     for (int layerNum = 0; layerNum < numLayers; ++layerNum) 
     {
-        layers_.push_back(Layer());
+        layers_.emplace_back(Layer());
         int numOutputs = layerNum == topology.size() - 1 ? 0 : topology[layerNum + 1];
 
         // We have a new layer, now fill it with neurons,
@@ -109,7 +109,7 @@ Net::Net(const vector<int>& topology) : error_(0.0), recentAverageError_(0.0)
         const auto L = topology[layerNum];
         for (int neuronNum = 0; neuronNum <= L; ++neuronNum)
         {
-            layers_.back().push_back(Neuron(numOutputs, neuronNum));
+            layers_.back().emplace_back(Neuron(numOutputs, neuronNum));
             cout << "Neuron made." << endl;
         }
 
