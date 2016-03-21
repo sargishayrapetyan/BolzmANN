@@ -31,6 +31,7 @@ int main()
     std::vector<double> targetVals;
     std::vector<double> resultVals;
     int            trainingPass = 0;
+	int nTaguhi = 10;
 
     while (!trainData.isEof()) 
     {
